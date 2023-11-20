@@ -12,16 +12,16 @@ def string_remove(path_to_files, substring): #The renaming function of the "Remo
             old_path = os.path.join(path_to_files, file_name) #Make the path with the file prior to renaming.
             new_path = os.path.join(path_to_files, new_file_name) #Make the path with the soon to be renamed file.
             if os.path.exists(new_path): #Check if there is already a file with the same name as the new name and skips it if so.
-                print(f"File '{new_file_name}' already exists. Skipping...")
+                print('\033[93m' + f"File '{new_file_name}' already exists. Skipping..." + '\033[0m')
             else: #Rename the file if there aren't conflicting files.
                 os.rename(old_path, new_path)
         else: #Count one file whose name wasn't changed.
             file_count += 1
 
     if file_count == file_num: #Warn the user that no changes were made.
-        print("No file containing the provided text was found.\n")
+        print('\033[93m' + "No file containing the provided text was found.\n" + '\033[0m')
     else:
-        print("Operation completed.\n")
+        print('\033[32m' + "Operation completed.\n" + '\033[0m')
     return
 
 def remove_mode(path_to_files): #Remove substring.
