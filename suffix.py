@@ -5,7 +5,8 @@ def suffix_add(path_to_files, suffix):
     files = os.listdir(path_to_files) #Get the path to look for files.
 
     for file_name in files: #Search all the entries inside the path.
-        new_file_name = file_name + suffix #Add the suffix to the file name.
+        base_name, extension = os.path.splitext(file_name) #Split the name from the extension.
+        new_file_name = base_name + suffix + extension #Add the suffix to the file name.
         old_path = os.path.join(path_to_files, file_name) #Make the path with the file prior to renaming.
         new_path = os.path.join(path_to_files, new_file_name) #Make the path with the soon to be renamed file.
         if os.path.exists(new_path): #Check if there is already a file with the same name as the new name and skips it if so.
@@ -26,7 +27,8 @@ def suffix_add_substring(path_to_files, suffix, substring): #Add a suffix to fil
 
     for file_name in files: #Search all the entries inside the path.
         if substring in file_name: #Search for the substring in a file's name.
-            new_file_name = file_name + suffix #Add the suffix to the file name.
+            base_name, extension = os.path.splitext(file_name) #Split the name from the extension.
+            new_file_name = base_name + suffix + extension #Add the suffix to the file name.
             old_path = os.path.join(path_to_files, file_name) #Make the path with the file prior to renaming.
             new_path = os.path.join(path_to_files, new_file_name) #Make the path with the soon to be renamed file.
             if os.path.exists(new_path): #Check if there is already a file with the same name as the new name and skips it if so.
